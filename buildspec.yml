@@ -10,6 +10,6 @@ phases:
       - mvn install
 artifacts:
   files:
-   - '**/project_2-0.1.1-SNAPSHOT.war'
+   - '**/*'
    - 'appspec.yml'
   discard-paths: yes
