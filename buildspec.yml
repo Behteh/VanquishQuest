@@ -13,7 +13,7 @@ phases:
       - echo "Post Build"
       - ls 
       - pwd
-      - nohup java -jar ./target/project_2-0.0.1-SNAPSHOT.jar & disown $!
+      - nohup java -jar ./target/project_2-0.0.1-SNAPSHOT.jar & echo $! > pidfile
 artifacts:
   files:
    - '**/*'
