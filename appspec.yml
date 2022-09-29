@@ -1,7 +1,7 @@
 version: 0.0
-os: amazon linux 2
+os: linux
 hooks:
   AfterInstall:
   -location: install.sh
-  timeout: 300
-  runas: root
+  timeout: 3600
+  runas: ec2-user
