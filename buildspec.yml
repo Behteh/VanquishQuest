@@ -11,5 +11,6 @@ phases:
 artifacts:
   files:
    - '**/Vanquishquest.war'
+   
    - 'appspec.yml'
    discard-paths: yes
