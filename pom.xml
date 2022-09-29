@@ -11,7 +11,7 @@
 	<groupId>com.revature</groupId>
 	<artifactId>project_2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>project_2</name>
 	<description>A basic social platform, with an idle clicking game to enjoy while you communicate with friends.</description>
 	<properties>
