@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.exceptions.DuplicateGameUserException;
 import com.revature.exceptions.GameUserNotFoundException;
@@ -29,8 +31,9 @@ import com.revature.service.GameUserService;
 
 import net.minidev.json.JSONObject;
 
-@Controller
+@RestController
 @RequestMapping("/friends")
+@CrossOrigin(origins = "*")
 public class FriendsController {
 
 	private FriendService friendsService;
@@ -45,7 +48,7 @@ public class FriendsController {
 		this.gus = gus;
 	}
 	@GetMapping(value="/{id}", produces="application/json")
-	public @ResponseBody ResponseEntity<?> getFriends( //Change to return Friends array once implemented
+	public @ResponseBody ResponseEntity<?> getFriends(
 			@PathVariable("id") long user_id
 			) throws GameUserNotFoundException, NoFriendsException{
 		if(!gus.exists(user_id))
@@ -126,6 +129,8 @@ public class FriendsController {
 		return ResponseEntity.status(201).body(frs.save(fr));
 	}
 	
+	// /{id} is receiver_id in the database
+	// id parameter is request_id in the database.
 	@DeleteMapping(value = "/{id}/requests/delete")
 	public ResponseEntity<?> deleteFriendRequest(
 			@PathVariable("id") long id,

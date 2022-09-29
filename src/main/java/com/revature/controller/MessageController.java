@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.exceptions.GameUserNotFoundException;
 import com.revature.exceptions.MessageNotFoundException;
@@ -25,8 +27,9 @@ import com.revature.service.ChatMessageService;
 
 import net.minidev.json.JSONObject;
 
-@Controller
+@RestController
 @RequestMapping("/message")
+@CrossOrigin(origins = "*")
 public class MessageController {
 	
 	private ChatMessageService chatMessageService;
