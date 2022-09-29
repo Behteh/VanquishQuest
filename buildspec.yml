@@ -7,10 +7,9 @@ phases:
   build:
     commands:
       - java -version
-      - mvn package
-    post_build:
-      commands:
-      - mv target/ROOT.war ROOT.war
+      - mvn install
 artifacts:
   files:
-   - '**/*'
+   - '**/Vanquishquest.war'
+   - 'appspec.yaml'
+   discard-paths: yes
