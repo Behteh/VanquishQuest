@@ -90,6 +90,7 @@ public class CharacterController {
 			json.appendField("armor_id", characterSheet.get().getArmor_id());
 			json.appendField("armor_url", "/armor/" + characterSheet.get().getArmor_id());
 			json.appendField("user_id", characterSheet.get().getUser_id());
+			json.appendField("health", characterSheet.get().getHealth());
 			return ResponseEntity.ok(json);
 		}
 		throw new CharacterNotFoundException("The character was not found");
@@ -112,6 +113,7 @@ public class CharacterController {
 				json.appendField("armor_id", characterSheet.get().getArmor_id());
 				json.appendField("armor_url", "/armor/" + characterSheet.get().getArmor_id());
 				json.appendField("user_id", characterSheet.get().getUser_id());
+				json.appendField("health", characterSheet.get().getHealth());
 			return ResponseEntity.ok(json);
 			}
 			throw new CharacterNotFoundException("The character was not found");
@@ -120,12 +122,12 @@ public class CharacterController {
 	@PutMapping(value="/{id}/update")
 	public ResponseEntity<?> updateUser(
 			@PathVariable("id") long player_id,
-			@RequestParam(name="user_id", required=true, defaultValue = "0") long user_id,
-			@RequestParam(name="weapon_id", required=false, defaultValue = "0") long weapon_id,
-			@RequestParam(name="armor_id", required=false, defaultValue = "0") long armor_id,
-			@RequestParam(name="name", required=false, defaultValue = "0") String name,
-			@RequestParam(name = "gold", required=false, defaultValue = "0") int gold,
-			@RequestParam(name = "health", required=false, defaultValue = "0") int health
+			@RequestParam(name="user_id", required=true) long user_id,
+			@RequestParam(name="weapon_id", required=true) long weapon_id,
+			@RequestParam(name="armor_id", required=true) long armor_id,
+			@RequestParam(name="name", required=true) String name,
+			@RequestParam(name = "gold", required=true) int gold,
+			@RequestParam(name = "health", required=true) int health
 			) throws CharacterNotFoundException, GameUserAlreadyExistsException {
 		if(!characterSheetService.exists(player_id))
 		{
@@ -134,30 +136,12 @@ public class CharacterController {
 		CharacterSheet characterSheet = new CharacterSheet();
 		characterSheet.setCharacter_id(player_id);
 		characterSheet.setUser_id(user_id);
-		if(weapon_id != 0)
-		{
-			characterSheet.setWeapon_id(weapon_id);
-		}
-		if(armor_id != 0)
-		{
-			characterSheet.setArmor_id(armor_id);
-		}
-		if(!name.equals("0"))
-		{
-			if(characterSheetService.exists(name))
-			{
-				throw new GameUserAlreadyExistsException();
-			}
-			characterSheet.setName(name);
-		}
-		if(gold != 0)
-		{
-			characterSheet.setGold(gold);
-		}
-		if(health != 0)
-		{
-			characterSheet.setHealth(health);
-		}
+		characterSheet.setWeapon_id(weapon_id);
+		characterSheet.setArmor_id(armor_id);
+		characterSheet.setName(name);
+		characterSheet.setGold(gold);
+		characterSheet.setHealth(health);
+		characterSheet.setName(name);
 		return ResponseEntity.ok(characterSheetService.save(characterSheet));
 	}
 	

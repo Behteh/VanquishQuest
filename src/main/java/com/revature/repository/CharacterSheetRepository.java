@@ -10,7 +10,7 @@ public interface CharacterSheetRepository extends JpaRepository<CharacterSheet, 
 
 	public boolean existsByName(String name);
 
-	@Query(value="SELECT * FROM character_sheet WHERE user_id = :user_id", nativeQuery=true)
+	@Query(value="SELECT * FROM character_sheet WHERE user_id = :user_id LIMIT 1", nativeQuery=true)
 	public Optional<CharacterSheet> getUserById(long user_id);
 
 }

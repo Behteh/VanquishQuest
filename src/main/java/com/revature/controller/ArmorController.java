@@ -3,12 +3,10 @@ package com.revature.controller;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.exceptions.ArmorCreationException;
 import com.revature.exceptions.ArmorNotFoundException;
-import com.revature.exceptions.GameUserAlreadyExistsException;
 import com.revature.exceptions.NoArmorsException;
 import com.revature.repository.entity.Armor;
 import com.revature.service.ArmorService;
