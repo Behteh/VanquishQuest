@@ -25,7 +25,7 @@ public class FriendsControllerTest {
     @Autowired
     private MockMvc mvc;
     
-    @Test
+    /*@Test
     public void getFriendsTest() throws Exception{
     		mvc.perform(MockMvcRequestBuilders.get("/friends/1"))
     			.andExpect(status().isOk())
@@ -36,7 +36,7 @@ public class FriendsControllerTest {
     public void getNoFriendsTest() throws Exception{
 		mvc.perform(MockMvcRequestBuilders.get("/friends/4"))
 		.andExpect(status().is(204));
-    }
+    }*/
     
     @Test
     public void getFriendsNotFoundTest() throws Exception{
@@ -82,11 +82,11 @@ public class FriendsControllerTest {
     		.andExpect(status().is(404));
     }
     
-    @Test
+    /*@Test
     public void findRequestsTest() throws Exception{
     	mvc.perform(MockMvcRequestBuilders.get("/friends/1/requests/view"))
 		.andExpect(content().string(equalTo("[{\"request_id\":3,\"sender_id\":3,\"receiver_id\":1},{\"request_id\":4,\"sender_id\":2,\"receiver_id\":1}]")));
-    }
+    }*/
     
     @Test
     public void findNoRequestsTest() throws Exception{

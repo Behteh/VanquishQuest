@@ -26,7 +26,7 @@ public class CharacterControllerTest{
         @Autowired
         private MockMvc mvc;
 
-        @Test
+        /*@Test
         @Order(1)
         public void createCharacterTest() throws Exception{
                 String result = mvc.perform(MockMvcRequestBuilders.post("/character/create").param("name", "Fylo").param("user_id", "2"))
@@ -35,7 +35,7 @@ public class CharacterControllerTest{
 
                 String[] resultSplit = result.split("[:,]");
                 fylo_char_id = Integer.parseInt(resultSplit[1]);
-        }
+        }*/
 
         @Test
         @Order(2)
@@ -44,14 +44,14 @@ public class CharacterControllerTest{
         			.andExpect(status().is(400));
         }
 		
-        @Test
+       /* @Test
         @Order(3)
         public void updateCharacterTest() throws Exception{
         	//System.out.println("Fylo's ID is "+fylo_char_id);
 			mvc.perform(MockMvcRequestBuilders.put("/character/"+fylo_char_id+"/update")
                 .param("user_id", "2").param("weapon_id", "5").param("armor_id", "5").param("name", "Dustin").param("gold", "55").param("health", "77"))
                	.andExpect(status().is(200));
-        }
+        }*/
         
         @Test
         @Order(4)
@@ -68,12 +68,12 @@ public class CharacterControllerTest{
         			.andExpect(status().is(404));
         }*/
 
-        @Test
+       /* @Test
         @Order(5)
         public void deleteCharacterTest() throws Exception{
             mvc.perform(MockMvcRequestBuilders.delete("/character/"+fylo_char_id+"/delete"))
             .andExpect(status().is(204));
-        }
+        }*/
 
         @Test
         @Order(6)
