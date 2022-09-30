@@ -4,17 +4,10 @@ phases:
   install:
     runtime-versions:
       java: corretto8
-  build:
-    commands:
-      - java -version
-      - mvn clean install
   post_build:
     commands:
       - echo "Post Build"
-      - ls 
-      - pwd
-      - nohup java -jar ./target/project_2-0.0.1-SNAPSHOT.jar & echo $! > pidfile
+      - mvn package
 artifacts:
   files:
-   - '**/*'
-  discard-paths: yes
+   - target/project_2-0.0.1-SNAPSHOT.jar
