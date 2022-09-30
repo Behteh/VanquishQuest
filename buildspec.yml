@@ -8,7 +8,6 @@ phases:
     commands:
       - echo "Post Build"
       - mvn package
-      - nohup java -jar ./target/project_2-0.0.1-SNAPSHOT.jar & echo $!> pidfile
 artifacts:
   files:
    - target/project_2-0.0.1-SNAPSHOT.jar
