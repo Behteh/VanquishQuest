@@ -41,4 +41,8 @@ public class CharacterSheetService {
 		// TODO Auto-generated method stub
 		return characterSheetRepository.existsByName(charname);
 	}
+
+	public Optional<CharacterSheet> findByUserId(long user_id) {
+		return characterSheetRepository.getUserById(user_id);
+	}
 }

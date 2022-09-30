@@ -95,6 +95,28 @@ public class CharacterController {
 		throw new CharacterNotFoundException("The character was not found");
 	}
 	
+	@GetMapping(value="/user", produces="application/json")
+	public @ResponseBody ResponseEntity<?> getCharacterByUserId(
+			@RequestParam(name = "id", required=true) long user_id)
+		throws CharacterNotFoundException
+		{
+			Optional<CharacterSheet> characterSheet = characterSheetService.findByUserId(user_id);
+			if(characterSheet.isPresent())
+			{
+				JSONObject json = new JSONObject();
+				json.appendField("character_id", characterSheet.get().getCharacter_id());
+				json.appendField("name", characterSheet.get().getName());
+				json.appendField("gold", characterSheet.get().getGold());
+				json.appendField("weapon_id", characterSheet.get().getWeapon_id());
+				json.appendField("weapon_url", "/weapon/" + characterSheet.get().getWeapon_id());
+				json.appendField("armor_id", characterSheet.get().getArmor_id());
+				json.appendField("armor_url", "/armor/" + characterSheet.get().getArmor_id());
+				json.appendField("user_id", characterSheet.get().getUser_id());
+			return ResponseEntity.ok(json);
+			}
+			throw new CharacterNotFoundException("The character was not found");
+	}
+	
 	@PutMapping(value="/{id}/update")
 	public ResponseEntity<?> updateUser(
 			@PathVariable("id") long player_id,
