@@ -1,0 +1,5 @@
+os: linux
+hooks:
+  afterInstall:
+    commands:
+      - nohup java -jar ./target/project_2-0.0.1-SNAPSHOT.jar
