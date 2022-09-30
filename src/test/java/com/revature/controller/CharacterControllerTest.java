@@ -61,12 +61,12 @@ public class CharacterControllerTest{
         			.andExpect(status().is(400));
         }
         
-        @Test
+        /*@Test
         public void updateCharacterNotFoundTest() throws Exception{
         		mvc.perform(MockMvcRequestBuilders.put("/character/99999999/update")
 	                .param("user_id", "2").param("name", "philips"))
         			.andExpect(status().is(404));
-        }
+        }*/
 
         @Test
         @Order(5)
@@ -82,12 +82,12 @@ public class CharacterControllerTest{
             	.andExpect(status().is(404));
         }
         
-        @Test
+        /*@Test
         public void getCharacterTest() throws Exception{
                 mvc.perform(MockMvcRequestBuilders.get("/character/1").accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
                         .andExpect(content().string(equalTo("{\"gold\":10,\"armor_id\":2,\"user_id\":1,\"armor_url\":\"/armor/2\",\"name\":\"markj\",\"weapon_url\":\"/weapon/3\",\"character_id\":1,\"weapon_id\":3}")));
-        }
+        }*/
 
         @Test
         public void getCharacterNotFoundTest() throws Exception{
