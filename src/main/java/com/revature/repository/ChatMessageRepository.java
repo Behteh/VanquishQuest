@@ -10,7 +10,7 @@ import com.revature.repository.entity.ChatMessage;
 
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long>{
 
-	@Query(value = "SELECT * FROM chat_messages ORDER BY  timestamp DESC LIMIT 20", nativeQuery = true)
+	@Query(value = "SELECT * FROM chat_messages ORDER BY  timestamp ASC LIMIT 100", nativeQuery = true)
 	public Optional<List<ChatMessage>> getRecentMessages();
 
 	@Query(value = "SELECT * FROM chat_messages WHERE message iLIKE %:keywords% ORDER BY timestamp DESC LIMIT 20", nativeQuery = true)

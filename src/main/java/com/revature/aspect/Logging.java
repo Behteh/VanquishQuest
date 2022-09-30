@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class Logging {
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger logger = LoggerFactory.getLogger("fileLogger");
 	
 	@Pointcut("execution(* com.revature.controller.*.*(..))")
 	private void controllerPointcut() {}
