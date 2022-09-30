@@ -1,7 +1,0 @@
-os: linux
-hooks:
-  afterInstall:
-    commands:
-      - ls
-      - pwd
-      - nohup java -jar ./target/project_2-0.0.1-SNAPSHOT.jar & echo $! > pidfile
